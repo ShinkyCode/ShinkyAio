@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using EnsoulSharp;
 using EnsoulSharp.SDK;
@@ -53,7 +53,7 @@ namespace ShinkyAio
             mainMenu.Add(flee);
 
             var Misc = new Menu("Misc", "Misc");
-            Misc.Add(new MenuList("qhit", "Q - HitChance :", new[] { "High", "Medium", "Low"}));
+            Misc.Add(new MenuList("qhit", "Q - HitChance :", new[] { "VeryHigh", "High", "Medium"}));
             Misc.Add(new MenuSlider("maxq", "Maximum Q Range", (int)Q.Range, 100, (int)Q.Range));
             Misc.Add(new MenuSlider("minq", "Minimum Q Range", 420, 100, (int)Q.Range));
             Misc.Add(new MenuSlider("grabhp", "Dont grab if below HP%", 0, 0, 100));
@@ -112,13 +112,13 @@ namespace ShinkyAio
             switch (mainMenu["Misc"].GetValue<MenuList>("qhit").Index)
             {
                 case 0:
-                    hit = HitChance.High;
+                    hit = HitChance.VeryHigh;
                     break;
                 case 1:
-                    hit = HitChance.Medium;
+                    hit = HitChance.High;
                     break;
                 case 2:
-                    hit = HitChance.Low;
+                    hit = HitChance.Medium;
                     break;
             }
             return hit;
@@ -159,7 +159,7 @@ namespace ShinkyAio
                     if (!mainMenu["BLK"].GetValue<MenuBool>("blq" + sender.CharacterName).Enabled &&
                         Player.Distance(sender.Position) > mainMenu["Misc"].GetValue<MenuSlider>("minq").Value)
                     {
-                        Q.CastIfHitchanceEquals(sender, HitChance.Medium);
+                        Q.CastIfHitchanceEquals(sender, hitchanceQ());
                     }
                 }
             }
