@@ -1,6 +1,5 @@
-﻿using EnsoulSharp;
+using EnsoulSharp;
 using EnsoulSharp.SDK;
-using EnsoulSharp.SDK.MenuUI;
 
 namespace ShinkyAio
 {
@@ -13,9 +12,6 @@ namespace ShinkyAio
 
         private static void OnLoadGame()
         {
-            var pred = new Menu("spred", "Predict Selection", true);
-            SPrediction.Prediction.Initialize(pred);
-            pred.Attach();
 
             new AutoLevelUp().Load();
 
