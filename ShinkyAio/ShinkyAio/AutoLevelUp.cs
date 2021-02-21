@@ -49,17 +49,6 @@ namespace ShinkyAio
 
         private void Up(int lvl)
         {
-            if (ObjectManager.Player.Level < 4)
-            {
-                if (lvl == 0 && ObjectManager.Player.Spellbook.GetSpell(SpellSlot.Q).Level == 0)
-                    ObjectManager.Player.Spellbook.LevelSpell(SpellSlot.Q);
-                if (lvl == 1 && ObjectManager.Player.Spellbook.GetSpell(SpellSlot.W).Level == 0)
-                    ObjectManager.Player.Spellbook.LevelSpell(SpellSlot.W);
-                if (lvl == 2 && ObjectManager.Player.Spellbook.GetSpell(SpellSlot.E).Level == 0)
-                    ObjectManager.Player.Spellbook.LevelSpell(SpellSlot.E);
-            }
-            else
-            {
                 if (lvl == 0)
                     ObjectManager.Player.Spellbook.LevelSpell(SpellSlot.Q);
                 if (lvl == 1)
@@ -68,7 +57,6 @@ namespace ShinkyAio
                     ObjectManager.Player.Spellbook.LevelSpell(SpellSlot.E);
                 if (lvl == 3)
                     ObjectManager.Player.Spellbook.LevelSpell(SpellSlot.R);
-            }
         }
     }
 }
